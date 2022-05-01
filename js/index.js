@@ -28,18 +28,20 @@ function calculateAll() {
   // ITERATION 2
   //... your code goes here
   const productsCollection = document.getElementsByClassName('product');
+  //console.log(productsCollection);
+  //[...productsCollection].forEach((product) => updateSubtotal(product));
+  //[...productsCollection].forEach((product) => console.log(product));
+
+  // ITERATION 3
+  //... your code goes here
   const totalValue = document.querySelector('#total-value span');
   //console.log(totalValue.innerText);
-  //console.log(productsCollection);
   let totalSumProducts = 0;
   [...productsCollection].forEach((product) => {total = updateSubtotal(product)
                                                 totalSumProducts +=parseFloat(total);
   
   });
   totalValue.innerHTML = totalSumProducts;
-
-  // ITERATION 3
-  //... your code goes here
 }
 
 // ITERATION 4
