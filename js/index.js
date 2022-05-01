@@ -44,13 +44,29 @@ function calculateAll() {
   totalValue.innerHTML = totalSumProducts;
 }
 
+
 // ITERATION 4
 
 function removeProduct(event) {
+  //... your code goes here
   const target = event.currentTarget;
   console.log('The target in remove is:', target);
-  //... your code goes here
+  //console.log("This parent is a td", target.parentNode);
+  //console.log("This parent is a tr", target.parentNode.parentNode);
+  //console.log("This parent is a tbody", target.parentNode.parentNode.parentNode);
+  productChildNodeToDelete = target.parentNode.parentNode;
+  productParentNodeDeleteFrom = target.parentNode.parentNode.parentNode;
+  productParentNodeDeleteFrom.removeChild(productChildNodeToDelete);
+  calculateAll();
 }
+
+window.addEventListener('load', () => {
+
+  const RemoveBtnCollection = document.getElementsByClassName('btn btn-remove');
+  [...RemoveBtnCollection].forEach((RemoveBtn) => {RemoveBtn.addEventListener('click', removeProduct);});
+
+});
+
 
 // ITERATION 5
 
