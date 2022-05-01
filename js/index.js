@@ -41,7 +41,7 @@ function calculateAll() {
                                                 totalSumProducts +=parseFloat(total);
   
   });
-  totalValue.innerHTML = totalSumProducts;
+  totalValue.innerHTML = totalSumProducts.toFixed(2);
 }
 
 
@@ -60,18 +60,38 @@ function removeProduct(event) {
   calculateAll();
 }
 
-window.addEventListener('load', () => {
-
-  const RemoveBtnCollection = document.getElementsByClassName('btn btn-remove');
-  [...RemoveBtnCollection].forEach((RemoveBtn) => {RemoveBtn.addEventListener('click', removeProduct);});
-
-});
-
 
 // ITERATION 5
 
 function createProduct() {
   //... your code goes here
+  const nameInput = document.getElementsByTagName('input')[2];
+  //console.log(nameInput.value);
+  const priceInput = document.getElementsByTagName('input')[3];
+  //console.log(priceInput.value);
+  if (nameInput.value) {
+    const newRow = document.createElement('tr');
+    newRow.classList.add('product');
+    newRow.innerHTML = `<td class="name">
+            <span>${nameInput.value}</span>
+          </td>
+          <td class="price">$<span>${priceInput.value}</span></td>
+          <td class="quantity">
+            <input type="number" value="0" min="0" placeholder="Quantity" />
+          </td>
+          <td class="subtotal">$<span>0</span></td>
+          <td class="action">
+            <button class="btn btn-remove">Remove</button>
+          </td>`;
+  document.getElementsByTagName('tbody')[0].appendChild(newRow);
+  //console.log(newRow);
+  nameInput.value = "";
+  priceInput.value = "0";
+
+  //able to remove new element adding addEventListener to new remove button
+  const RemoveBtnCollection = document.getElementsByClassName('btn btn-remove');
+  [...RemoveBtnCollection].forEach((RemoveBtn) => {RemoveBtn.addEventListener('click', removeProduct);});
+  }
 }
 
 window.addEventListener('load', () => {
@@ -79,4 +99,10 @@ window.addEventListener('load', () => {
   calculatePricesBtn.addEventListener('click', calculateAll);
 
   //... your code goes here
+  const RemoveBtnCollection = document.getElementsByClassName('btn btn-remove');
+  [...RemoveBtnCollection].forEach((RemoveBtn) => {RemoveBtn.addEventListener('click', removeProduct);});
+
+  const createsBtn = document.getElementById('create');
+  createsBtn.addEventListener('click', createProduct);
+  
 });
