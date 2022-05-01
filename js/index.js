@@ -65,9 +65,9 @@ function removeProduct(event) {
 
 function createProduct() {
   //... your code goes here
-  const nameInput = document.getElementsByTagName('input')[2];
+  const nameInput = document.querySelector('.create-product td:nth-child(1) input');
   //console.log(nameInput.value);
-  const priceInput = document.getElementsByTagName('input')[3];
+  const priceInput = document.querySelector('.create-product td:nth-child(2) input');
   //console.log(priceInput.value);
   if (nameInput.value) {
     const newRow = document.createElement('tr');
@@ -87,7 +87,6 @@ function createProduct() {
   //console.log(newRow);
   nameInput.value = "";
   priceInput.value = "0";
-
   //able to remove new element adding addEventListener to new remove button
   const RemoveBtnCollection = document.getElementsByClassName('btn btn-remove');
   [...RemoveBtnCollection].forEach((RemoveBtn) => {RemoveBtn.addEventListener('click', removeProduct);});
