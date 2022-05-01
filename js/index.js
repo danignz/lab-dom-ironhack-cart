@@ -8,13 +8,13 @@ function updateSubtotal(product) {
   //console.log(price.innerText);
   const quantity = product.querySelector('.quantity input');
   //console.log(quantity.value);
-  const subtotalPrice = price.innerText * quantity.value;
+  const subtotalPrice = (price.innerText * quantity.value).toFixed(2);
   //console.log(subtotalPrice);
   const subtotal = product.querySelector('.subtotal span');
   subtotal.innerHTML = subtotalPrice;
   //console.log(subtotal.innerText);
 
-  return subtotal.innerHTML;
+  return subtotalPrice;
 }
 
 function calculateAll() {
